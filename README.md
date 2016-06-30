@@ -2,6 +2,10 @@
 
 > 這是一個小型的徵才專案，使用 Vue.js，依照 Hahow back-end APIs 所提供的資料、以及 wireframe 來完成頁面。
 
+## Prerequisites
+
+[Node.js](https://nodejs.org) - 建議使用 v3.4.2 以上。
+
 ## Build Setup
 
 ``` bash
