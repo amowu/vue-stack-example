@@ -5,5 +5,7 @@ import App from './App'
 
 Vue.use(VueRouter)
 
+let router = new VueRouter({
+  history: true
 })
 router.start(App, 'app')
