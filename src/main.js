@@ -23,4 +23,9 @@ router.map({
   }
 })
 
+router.redirect({
+  '/': '/heroes',
+  '*': '/'
+})
+
 router.start(App, 'app')
