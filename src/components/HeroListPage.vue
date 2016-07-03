@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Hero List Page</h1>
     <ul class="hero-list">
       <li class="hero-card">
         <a v-link="{ name: 'hero', params: { heroId: 1 }}">
