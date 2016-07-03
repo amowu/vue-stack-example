@@ -44,11 +44,15 @@ module.exports = {
       .assert.value('.hero-status:nth-child(3) input', '9')
       .assert.value('.hero-status:nth-child(4) input', '7')
   },
-  '並且在數值左右各有一個按鈕，負責做增減功能': function (browser) {},
+  '並且在數值左右各有一個按鈕，負責做增減功能': function (browser) {
+    browser
+      .assert.elementCount('.hero-status:first-child button[name=dec-btn]', 1)
+      .assert.elementCount('.hero-status:first-child button[name=inc-btn]', 1)
+  },
   '另外有一個顯示剩餘的能力點數的地方，一開始預設值是 0': function (browser) {
     browser
-      .assert.elementCount('output[name=hero-status-sum]', 1)
-      .assert.value('output[name=hero-status-sum]', '0')
+      .assert.elementCount('output[name=hero-status-remain]', 1)
+      .assert.value('output[name=hero-status-remain]', '0')
   },
   'Hero Profile 最下方有一個儲存按鈕': function (browser) {
     browser
