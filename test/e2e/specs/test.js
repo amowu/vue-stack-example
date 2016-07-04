@@ -34,29 +34,29 @@ module.exports = {
   'Hero Profile Page 中，在 Hero List 底下會有一個 Hero Profile': function (browser) {},
   'Hero Profile 會顯示 Hero 的能力值': function (browser) {
     browser
-      .assert.elementCount('.hero-status', 4)
-      .assert.containsText('.hero-status:nth-child(1)', 'STR')
-      .assert.containsText('.hero-status:nth-child(2)', 'INT')
-      .assert.containsText('.hero-status:nth-child(3)', 'AGI')
-      .assert.containsText('.hero-status:nth-child(4)', 'LUK')
-      .assert.value('.hero-status:nth-child(1) input', '2')
-      .assert.value('.hero-status:nth-child(2) input', '7')
-      .assert.value('.hero-status:nth-child(3) input', '9')
-      .assert.value('.hero-status:nth-child(4) input', '7')
+      .assert.elementCount('.hero-attrs', 4)
+      .assert.containsText('.hero-attrs:nth-child(1)', 'STR')
+      .assert.containsText('.hero-attrs:nth-child(2)', 'INT')
+      .assert.containsText('.hero-attrs:nth-child(3)', 'AGI')
+      .assert.containsText('.hero-attrs:nth-child(4)', 'LUK')
+      .assert.value('.hero-attrs:nth-child(1) input', '2')
+      .assert.value('.hero-attrs:nth-child(2) input', '7')
+      .assert.value('.hero-attrs:nth-child(3) input', '9')
+      .assert.value('.hero-attrs:nth-child(4) input', '7')
   },
   '並且在數值左右各有一個按鈕，負責做增減功能': function (browser) {
     browser
-      .assert.elementCount('.hero-status:first-child button[name=dec-btn]', 1)
-      .assert.elementCount('.hero-status:first-child button[name=inc-btn]', 1)
+      .assert.elementCount('.hero-attrs button[name=dec-btn]', 4)
+      .assert.elementCount('.hero-attrs button[name=inc-btn]', 4)
   },
   '另外有一個顯示剩餘的能力點數的地方，一開始預設值是 0': function (browser) {
     browser
-      .assert.elementCount('output[name=hero-status-remain]', 1)
-      .assert.value('output[name=hero-status-remain]', '0')
+      .assert.elementCount('output[name=hero-remaining-points]', 1)
+      .assert.value('output[name=hero-remaining-points]', '0')
   },
   'Hero Profile 最下方有一個儲存按鈕': function (browser) {
     browser
-      .assert.elementCount('button[name=hero-status-updated-btn]', 1)
+      .assert.elementCount('button[name=hero-attrs-updated-btn]', 1)
   },
   '按下按鈕後，會將現在設定的能力值提交更新 server 上的資料': function (browser) {},
   after: function (browser) {

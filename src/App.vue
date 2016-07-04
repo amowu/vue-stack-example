@@ -1,15 +1,17 @@
+<script>
+  import Hello from './components/Hello'
+  import store from './vuex/store'
+
+  export default {
+    components: {
+      Hello
+    },
+    store
+  }
+</script>
+
 <template>
   <div id="app">
     <router-view></router-view>
   </div>
 </template>
-
-<script>
-import Hello from './components/Hello'
-
-export default {
-  components: {
-    Hello
-  }
-}
-</script>

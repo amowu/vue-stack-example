@@ -1,21 +1,37 @@
 <script>
+  const ON_CHANGE_EVEN_NAME = 'change'
+
   export default {
     props: {
-      max: Number,
-      min: Number,
+      max: {
+        type: Number,
+        default: Number.MAX_SAFE_INTEGER
+      },
+      min: {
+        type: Number,
+        default: Number.MIN_SAFE_INTEGER
+      },
+      step: {
+        type: Number,
+        default: 1
+      },
       value: {
         type: Number,
+        default: 0,
         coerce: function (val) {
           return parseInt(val)
         }
       }
     },
     methods: {
-      increase () {
-        this.value += 1
-      },
-      decrease () {
-        this.value -= 1
+      add (step = 1) {
+        const { max, min } = this
+        const oldVal = this.value
+        const result = Math.min(Math.max(oldVal + step, min), max)
+        if (result !== oldVal) {
+          this.value = result
+          this.$emit(ON_CHANGE_EVEN_NAME, result)
+        }
       }
     }
   }
@@ -23,8 +39,8 @@
 
 <template>
   <div>
-    <button name="dec-btn" @click='decrease'>decrease</button>
-    <input type="text" name="num-input-text" :value='value'>
-    <button name="inc-btn" @click='increase'>increase</button>
+    <button name="dec-btn" @click.prevent="add(-step)">decrease</button>
+    <input type="text" name="num-input-text" readonly :value='value'>
+    <button name="inc-btn" @click.prevent="add(step)">increase</button>
   </div>
 </template>
