@@ -1,59 +1,82 @@
 <script>
+  import {
+    setCurr,
+    updateAttr
+  } from '../vuex/actions/heroes'
   import NumericalInput from './NumericalInput'
 
   export default {
-    data () {
-      return {
-        status: {
-          str: 2,
-          int: 7,
-          agi: 9,
-          luk: 7
-        },
-        total: 25
+    computed: {
+      usedPoints () {
+        const { heroId } = this.heroes.current
+        const { attrs } = this.heroes.entities[heroId]
+        return Object.keys(attrs)
+          .reduce((sum, key) => sum + attrs[key], 0)
+      },
+      remainingPoints () {
+        const {
+          usedPoints,
+          heroes: {
+            current: {
+              totalPoints
+            }
+          }
+        } = this
+        return totalPoints - usedPoints
       }
     },
-    computed: {
-      sum () {
-        return Object.keys(this.status)
-                     .reduce((sum, key) => sum + this.status[key], 0)
-      },
-      remain () {
-        let { total, sum } = this
-        return total - sum
+    methods: {
+      onStatusChange (attr, [newVal]) {
+        const { heroId } = this.heroes.current
+        this.updateAttr(heroId, attr, newVal)
       }
+    },
+    watch: {
+      '$route.params.heroId' (val, oldVal) {
+        if (val !== oldVal) {
+          const { attrs } = this.heroes.entities[val]
+          this.setCurr(val, attrs)
+        }
+      }
+    },
+    ready () {
+      const { heroId } = this.$route.params
+      const { attrs } = this.heroes.entities[heroId]
+      this.setCurr(heroId, attrs)
     },
     components: {
       'numerical-input': NumericalInput
+    },
+    vuex: {
+      getters: {
+        heroes: state => state.heroes
+      },
+      actions: {
+        setCurr,
+        updateAttr
+      }
     }
   }
 </script>
 
 <template>
-  <div>
-    <p>heroId: {{ $route.params.heroId }}</p>
+  <div v-if="heroes.current.heroId">
     <ul>
-      <li class="hero-status">
-        STR
-        <numerical-input :value="status.str"></numerical-input>
-      </li>
-      <li class="hero-status">
-        INT
-        <numerical-input :value="status.int"></numerical-input>
-      </li>
-      <li class="hero-status">
-        AGI
-        <numerical-input :value="status.agi"></numerical-input>
-      </li>
-      <li class="hero-status">
-        LUK
-        <numerical-input :value="status.luk"></numerical-input>
+      <li class="hero-attrs"
+          v-for="(key, val) in heroes.entities[heroes.current.heroId].attrs">
+        {{ key | uppercase }}
+        <numerical-input
+          :max="val + remainingPoints"
+          :min="0"
+          :value="val"
+          @change="onStatusChange(key, $arguments)">
+        </numerical-input>
       </li>
     </ul>
     <div>
       剩餘點數：
-      <output name="hero-status-remain">{{ remain }}</output>
+      <output name="hero-remaining-points">{{ remainingPoints }}</output>
     </div>
-    <button name="hero-status-updated-btn">儲存</button>
+    <button name="hero-attrs-updated-btn">儲存</button>
   </div>
 </template>
