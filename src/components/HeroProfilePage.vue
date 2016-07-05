@@ -1,7 +1,7 @@
 <script>
   import {
     setCurr,
-    updateAttr
+    editCurrHeroAttr,
     fetchCurrHeroProfile,
   } from '../vuex/actions/heroes'
   import NumericalInput from './NumericalInput'
@@ -28,7 +28,7 @@
     methods: {
       onStatusChange (attr, [newVal]) {
         const { heroId } = this.heroes.current
-        this.updateAttr(heroId, attr, newVal)
+        this.editCurrHeroAttr(heroId, attr, newVal)
       }
     },
     watch: {
@@ -51,7 +51,7 @@
       },
       actions: {
         setCurr,
-        updateAttr
+        editCurrHeroAttr,
         fetchCurrHeroProfile,
       }
     }

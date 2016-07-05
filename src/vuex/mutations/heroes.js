@@ -1,4 +1,5 @@
 import {
+  EDIT_CURRENT_HERO_ATTRIBUTE,
   FETCH_CURRENT_HERO_LIST_ERROR,
   FETCH_CURRENT_HERO_LIST_START,
   FETCH_CURRENT_HERO_LIST_SUCCESS,
@@ -24,6 +25,9 @@ const mutations = {
     state.current = {
       heroId,
       totalPoints
+  [EDIT_CURRENT_HERO_ATTRIBUTE] (state, heroId, attr, newVal) {
+    state.current.profile[attr] = newVal
+  },
   [FETCH_CURRENT_HERO_LIST_SUCCESS] (state, heroes) {
     state.isHeroListPageLoading = false
     if (Array.isArray(heroes)) {
@@ -33,8 +37,6 @@ const mutations = {
       }, {})
     }
   },
-  [UPDATE_HERO_ATTRIBUTE] (state, heroId, attr, newVal) {
-    state.entities[heroId].attrs[attr] = newVal
   [FETCH_CURRENT_HERO_PROFILE_SUCCESS] (state, profile, heroId) {
     state.isHeroProfilePageLoading = false
     state.current.heroId = heroId

@@ -3,6 +3,7 @@ import {
   getHeroProfile,
 } from '../../cores/resources'
 import {
+  EDIT_CURRENT_HERO_ATTRIBUTE,
   FETCH_CURRENT_HERO_LIST_ERROR,
   FETCH_CURRENT_HERO_LIST_START,
   FETCH_CURRENT_HERO_LIST_SUCCESS,
@@ -35,3 +36,4 @@ export const fetchCurrHeroProfile = makeRequest(
   FETCH_CURRENT_HERO_PROFILE_START,
   FETCH_CURRENT_HERO_PROFILE_SUCCESS,
   FETCH_CURRENT_HERO_PROFILE_ERROR)
+export const editCurrHeroAttr = makeAction(EDIT_CURRENT_HERO_ATTRIBUTE)
