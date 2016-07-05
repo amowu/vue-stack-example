@@ -1,17 +1,17 @@
 <script>
   import {
-    setCurr,
-    updateAttr
+    editCurrHeroAttr,
+    fetchCurrHeroProfile,
+    patchCurrHeroProfile
   } from '../vuex/actions/heroes'
   import NumericalInput from './NumericalInput'
 
   export default {
     computed: {
       usedPoints () {
-        const { heroId } = this.heroes.current
-        const { attrs } = this.heroes.entities[heroId]
-        return Object.keys(attrs)
-          .reduce((sum, key) => sum + attrs[key], 0)
+        const { profile } = this.heroes.current
+        return Object.keys(profile)
+          .reduce((sum, key) => sum + profile[key], 0)
       },
       remainingPoints () {
         const {
@@ -28,21 +28,19 @@
     methods: {
       onStatusChange (attr, [newVal]) {
         const { heroId } = this.heroes.current
-        this.updateAttr(heroId, attr, newVal)
+        this.editCurrHeroAttr(heroId, attr, newVal)
       }
     },
     watch: {
-      '$route.params.heroId' (val, oldVal) {
-        if (val !== oldVal) {
-          const { attrs } = this.heroes.entities[val]
-          this.setCurr(val, attrs)
+      '$route.params.heroId' (heroId, prevHeroId) {
+        if (heroId !== prevHeroId) {
+          this.fetchCurrHeroProfile(heroId)
         }
       }
     },
     ready () {
       const { heroId } = this.$route.params
-      const { attrs } = this.heroes.entities[heroId]
-      this.setCurr(heroId, attrs)
+      this.fetchCurrHeroProfile(heroId)
     },
     components: {
       'numerical-input': NumericalInput
@@ -52,18 +50,21 @@
         heroes: state => state.heroes
       },
       actions: {
-        setCurr,
-        updateAttr
+        editCurrHeroAttr,
+        fetchCurrHeroProfile,
+        patchCurrHeroProfile
       }
     }
   }
 </script>
 
 <template>
-  <div v-if="heroes.current.heroId">
+  <div class="ui basic segment"
+    :class="{ 'loading': heroes.isHeroProfilePageLoading }"
+    v-if="heroes.current.heroId">
     <ul>
-      <li class="hero-attrs"
-          v-for="(key, val) in heroes.entities[heroes.current.heroId].attrs">
+      <li class="hero-profiles"
+          v-for="(key, val) in heroes.current.profile">
         {{ key | uppercase }}
         <numerical-input
           :max="val + remainingPoints"
@@ -81,7 +82,10 @@
         剩餘點數
       </div>
     </div>
-    <button name="hero-attrs-updated-btn" class="massive ui button">
+    <button
+      name="hero-profiles-updated-btn"
+      class="massive ui button"
+      @click="patchCurrHeroProfile(heroes.current.heroId, heroes.current.profile)">
       儲存
     </button>
   </div>
