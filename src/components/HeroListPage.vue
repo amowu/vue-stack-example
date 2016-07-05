@@ -22,6 +22,7 @@
 
 <template>
   <div>
+    <div class="ui basic segment" :class="{ 'loading': heroes.isHeroListPageLoading }">
       <div class="ui cards">
         <hero-card v-for="hero in heroes.entities"
           :image="hero.image"
@@ -29,6 +30,7 @@
           :selected="hero.id == heroes.current.heroId"
           @click="$router.go({ name: 'hero', params: { heroId: hero.id }})">
         </hero-card>
+      </div>
     </div>
     <router-view></router-view>
   </div>

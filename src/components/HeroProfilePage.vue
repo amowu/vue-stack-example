@@ -59,7 +59,9 @@
 </script>
 
 <template>
-  <div v-if="heroes.current.heroId">
+  <div class="ui basic segment"
+    :class="{ 'loading': heroes.isHeroProfilePageLoading }"
+    v-if="heroes.current.heroId">
     <ul>
       <li class="hero-profiles"
           v-for="(key, val) in heroes.current.profile">
