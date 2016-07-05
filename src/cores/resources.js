@@ -7,3 +7,7 @@ export const getHeroes = function () {
   return Vue.http.get('heroes')
 }
 
+export const getHeroProfile = function (heroId) {
+  return Vue.http.get(`heroes/${heroId}/profile`)
+}
+

@@ -2,16 +2,16 @@
   import {
     setCurr,
     updateAttr
+    fetchCurrHeroProfile,
   } from '../vuex/actions/heroes'
   import NumericalInput from './NumericalInput'
 
   export default {
     computed: {
       usedPoints () {
-        const { heroId } = this.heroes.current
-        const { attrs } = this.heroes.entities[heroId]
-        return Object.keys(attrs)
-          .reduce((sum, key) => sum + attrs[key], 0)
+        const { profile } = this.heroes.current
+        return Object.keys(profile)
+          .reduce((sum, key) => sum + profile[key], 0)
       },
       remainingPoints () {
         const {
@@ -32,17 +32,15 @@
       }
     },
     watch: {
-      '$route.params.heroId' (val, oldVal) {
-        if (val !== oldVal) {
-          const { attrs } = this.heroes.entities[val]
-          this.setCurr(val, attrs)
+      '$route.params.heroId' (heroId, prevHeroId) {
+        if (heroId !== prevHeroId) {
+          this.fetchCurrHeroProfile(heroId)
         }
       }
     },
     ready () {
       const { heroId } = this.$route.params
-      const { attrs } = this.heroes.entities[heroId]
-      this.setCurr(heroId, attrs)
+      this.fetchCurrHeroProfile(heroId)
     },
     components: {
       'numerical-input': NumericalInput
@@ -54,6 +52,7 @@
       actions: {
         setCurr,
         updateAttr
+        fetchCurrHeroProfile,
       }
     }
   }
@@ -62,8 +61,8 @@
 <template>
   <div v-if="heroes.current.heroId">
     <ul>
-      <li class="hero-attrs"
-          v-for="(key, val) in heroes.entities[heroes.current.heroId].attrs">
+      <li class="hero-profiles"
+          v-for="(key, val) in heroes.current.profile">
         {{ key | uppercase }}
         <numerical-input
           :max="val + remainingPoints"
