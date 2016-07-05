@@ -5,6 +5,7 @@
     patchCurrHeroProfile
   } from '../vuex/actions/heroes'
   import NumericalInput from './NumericalInput'
+  import StatisticButton from './StatisticButton'
 
   export default {
     computed: {
@@ -43,7 +44,8 @@
       this.fetchCurrHeroProfile(heroId)
     },
     components: {
-      'numerical-input': NumericalInput
+      NumericalInput,
+      StatisticButton
     },
     vuex: {
       getters: {
@@ -74,19 +76,17 @@
         </numerical-input>
       </li>
     </ul>
-    <div class="ui statistic">
-      <div class="value">
-        {{ remainingPoints }}
       </div>
-      <div class="label">
-        剩餘點數
+      <div class="column">
+        <statistic-button
+          label="剩餘點數"
+          ok-button-text="儲存"
+          :hazard="remainingPoints > 0"
+          :ok-button-disabled="remainingPoints > 0"
+          :value="remainingPoints"
+          @ok="patchCurrHeroProfile(heroes.current.heroId, heroes.current.profile)">
+        </statistic-button>
       </div>
     </div>
-    <button
-      name="hero-profiles-updated-btn"
-      class="massive ui button"
-      @click="patchCurrHeroProfile(heroes.current.heroId, heroes.current.profile)">
-      儲存
-    </button>
   </div>
 </template>
