@@ -2,6 +2,8 @@
   /* Global */
   & { @import "~semantic-ui-less/definitions/globals/reset"; }
   & { @import "~semantic-ui-less/definitions/globals/site"; }
+  /* Views */
+  & { @import "~semantic-ui-less/definitions/views/card"; }
 </style>
 
 <script>
