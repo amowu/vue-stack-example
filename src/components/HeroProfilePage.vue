@@ -73,10 +73,16 @@
         </numerical-input>
       </li>
     </ul>
-    <div>
-      剩餘點數：
-      <output name="hero-remaining-points">{{ remainingPoints }}</output>
+    <div class="ui statistic">
+      <div class="value">
+        {{ remainingPoints }}
+      </div>
+      <div class="label">
+        剩餘點數
+      </div>
     </div>
-    <button name="hero-attrs-updated-btn">儲存</button>
+    <button name="hero-attrs-updated-btn" class="massive ui button">
+      儲存
+    </button>
   </div>
 </template>
