@@ -38,9 +38,13 @@
 </script>
 
 <template>
-  <div>
-    <button name="dec-btn" @click.prevent="add(-step)">decrease</button>
+  <div class="ui action input">
     <input type="text" name="num-input-text" readonly :value='value'>
-    <button name="inc-btn" @click.prevent="add(step)">increase</button>
+    <button name="dec-btn" class="ui icon button" @click.prevent="add(-step)">
+      <i class="minus icon"></i>
+    </button>
+    <button name="inc-btn" class="ui icon button" @click.prevent="add(step)">
+      <i class="plus icon"></i>
+    </button>
   </div>
 </template>
