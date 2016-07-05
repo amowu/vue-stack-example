@@ -1,3 +1,12 @@
+<style scoped>
+  .ui.basic.segment {
+    min-height: 338.156px;
+  }
+  .ui.cards {
+    justify-content: center;
+  }
+</style>
+
 <script>
   import { fetchHeroes } from '../vuex/actions/heroes'
   import HeroCard from './HeroCard'

@@ -4,11 +4,14 @@
   & { @import "~semantic-ui-less/definitions/globals/site"; }
   /* Elements */
   & { @import "~semantic-ui-less/definitions/elements/button"; }
+  & { @import "~semantic-ui-less/definitions/elements/container"; }
   & { @import "~semantic-ui-less/definitions/elements/icon"; }
   & { @import "~semantic-ui-less/definitions/elements/input"; }
   & { @import "~semantic-ui-less/definitions/elements/label"; }
   & { @import "~semantic-ui-less/definitions/elements/list"; }
   & { @import "~semantic-ui-less/definitions/elements/segment"; }
+  /* Collections */
+  & { @import "~semantic-ui-less/definitions/collections/grid"; }
   /* Views */
   & { @import "~semantic-ui-less/definitions/views/card"; }
   & { @import "~semantic-ui-less/definitions/views/statistic"; }

@@ -1,3 +1,9 @@
+<style scoped>
+  .ui.basic.segment {
+    min-height: 166px;
+  }
+</style>
+
 <script>
   import {
     editCurrHeroAttr,
@@ -64,6 +70,8 @@
   <div class="ui basic segment"
     :class="{ 'loading': heroes.isHeroProfilePageLoading }"
     v-if="heroes.current.heroId">
+    <div class="ui stackable two column grid container">
+      <div class="column">
         <div class="ui list">
           <div class="item"
               v-for="(key, val) in heroes.current.profile">
@@ -75,6 +83,8 @@
               :value="val"
               @change="onStatusChange(key, $arguments)">
             </numerical-input>
+          </div>
+        </div>
       </div>
       <div class="column">
         <statistic-button
