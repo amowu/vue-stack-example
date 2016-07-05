@@ -3,6 +3,7 @@
 
   export default {
     props: {
+      label: String,
       max: {
         type: Number,
         default: Number.MAX_SAFE_INTEGER
@@ -39,6 +40,7 @@
 
 <template>
   <div class="ui action input">
+    <div class="ui label" v-show="label">{{ label }}</div>
     <input type="text" name="num-input-text" readonly :value='value'>
     <button name="dec-btn" class="ui icon button" @click.prevent="add(-step)">
       <i class="minus icon"></i>
