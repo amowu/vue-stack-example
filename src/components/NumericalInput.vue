@@ -3,6 +3,10 @@
 
   export default {
     props: {
+      fluid: {
+        type: Boolean,
+        default: false
+      },
       label: String,
       max: {
         type: Number,
@@ -39,7 +43,7 @@
 </script>
 
 <template>
-  <div class="ui action input">
+  <div class="ui action input" :class="{ 'fluid': fluid, 'labeled': label }">
     <div class="ui label" v-show="label">{{ label }}</div>
     <input type="text" name="num-input-text" readonly :value='value'>
     <button name="dec-btn" class="ui icon button" @click.prevent="add(-step)">

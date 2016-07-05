@@ -7,6 +7,7 @@
   & { @import "~semantic-ui-less/definitions/elements/icon"; }
   & { @import "~semantic-ui-less/definitions/elements/input"; }
   & { @import "~semantic-ui-less/definitions/elements/label"; }
+  & { @import "~semantic-ui-less/definitions/elements/list"; }
   & { @import "~semantic-ui-less/definitions/elements/segment"; }
   /* Views */
   & { @import "~semantic-ui-less/definitions/views/card"; }

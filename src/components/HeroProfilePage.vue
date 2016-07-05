@@ -64,18 +64,17 @@
   <div class="ui basic segment"
     :class="{ 'loading': heroes.isHeroProfilePageLoading }"
     v-if="heroes.current.heroId">
-    <ul>
-      <li class="hero-profiles"
-          v-for="(key, val) in heroes.current.profile">
-        {{ key | uppercase }}
-        <numerical-input
-          :max="val + remainingPoints"
-          :min="0"
-          :value="val"
-          @change="onStatusChange(key, $arguments)">
-        </numerical-input>
-      </li>
-    </ul>
+        <div class="ui list">
+          <div class="item"
+              v-for="(key, val) in heroes.current.profile">
+            <numerical-input
+              fluid
+              :label="key | uppercase"
+              :max="val + remainingPoints"
+              :min="0"
+              :value="val"
+              @change="onStatusChange(key, $arguments)">
+            </numerical-input>
       </div>
       <div class="column">
         <statistic-button
