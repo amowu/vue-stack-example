@@ -2,13 +2,17 @@
   export default {
     props: {
       image: String,
-      name: String
+      name: String,
+      selected: {
+        type: Boolean,
+        default: false
+      }
     }
   }
 </script>
 
 <template>
-  <a class="ui card">
+  <a class="ui card" :class="{ 'red': selected }">
     <div class="image">
       <img :src="image">
     </div>
