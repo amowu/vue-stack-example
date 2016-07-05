@@ -1,8 +1,8 @@
 <script>
   import {
-    setCurr,
     editCurrHeroAttr,
     fetchCurrHeroProfile,
+    patchCurrHeroProfile
   } from '../vuex/actions/heroes'
   import NumericalInput from './NumericalInput'
 
@@ -50,9 +50,9 @@
         heroes: state => state.heroes
       },
       actions: {
-        setCurr,
         editCurrHeroAttr,
         fetchCurrHeroProfile,
+        patchCurrHeroProfile
       }
     }
   }
@@ -80,7 +80,10 @@
         剩餘點數
       </div>
     </div>
-    <button name="hero-attrs-updated-btn" class="massive ui button">
+    <button
+      name="hero-profiles-updated-btn"
+      class="massive ui button"
+      @click="patchCurrHeroProfile(heroes.current.heroId, heroes.current.profile)">
       儲存
     </button>
   </div>

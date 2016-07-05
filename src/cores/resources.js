@@ -11,3 +11,6 @@ export const getHeroProfile = function (heroId) {
   return Vue.http.get(`heroes/${heroId}/profile`)
 }
 
+export const updateHeroProfile = function (heroId, profile) {
+  return Vue.http.patch(`heroes/${heroId}/profile`, profile)
+}

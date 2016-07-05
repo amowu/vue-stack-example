@@ -6,6 +6,9 @@ import {
   FETCH_CURRENT_HERO_PROFILE_ERROR,
   FETCH_CURRENT_HERO_PROFILE_START,
   FETCH_CURRENT_HERO_PROFILE_SUCCESS,
+  PATCH_CURRENT_HERO_PROFILE_ERROR,
+  PATCH_CURRENT_HERO_PROFILE_START,
+  PATCH_CURRENT_HERO_PROFILE_SUCCESS
 } from '../types'
 
 // 創建一個 state 物件，用來保存 heroes 的初始資料與狀態
@@ -20,11 +23,6 @@ const state = {
 
 // 創建一個 mutations 物件，用來保存一系列 heroes 相關的 mutation 函式
 const mutations = {
-  [SET_CURRENT_HERO] (state, heroId, attrs) {
-    const totalPoints = Object.keys(attrs).reduce((sum, key) => sum + attrs[key], 0)
-    state.current = {
-      heroId,
-      totalPoints
   [EDIT_CURRENT_HERO_ATTRIBUTE] (state, heroId, attr, newVal) {
     state.current.profile[attr] = newVal
   },
@@ -43,6 +41,8 @@ const mutations = {
     state.current.profile = { ...profile }
     state.current.totalPoints = Object.keys(profile).reduce((sum, key) => sum + profile[key], 0)
   },
+  [PATCH_CURRENT_HERO_PROFILE_SUCCESS] (state) {
+    state.isHeroProfilePageLoading = false
   }
 }
 

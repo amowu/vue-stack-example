@@ -1,6 +1,7 @@
 import {
   getHeroes,
   getHeroProfile,
+  updateHeroProfile
 } from '../../cores/resources'
 import {
   EDIT_CURRENT_HERO_ATTRIBUTE,
@@ -10,6 +11,9 @@ import {
   FETCH_CURRENT_HERO_PROFILE_ERROR,
   FETCH_CURRENT_HERO_PROFILE_START,
   FETCH_CURRENT_HERO_PROFILE_SUCCESS,
+  PATCH_CURRENT_HERO_PROFILE_ERROR,
+  PATCH_CURRENT_HERO_PROFILE_START,
+  PATCH_CURRENT_HERO_PROFILE_SUCCESS
 } from '../types'
 
 function makeAction (type) {
@@ -36,4 +40,9 @@ export const fetchCurrHeroProfile = makeRequest(
   FETCH_CURRENT_HERO_PROFILE_START,
   FETCH_CURRENT_HERO_PROFILE_SUCCESS,
   FETCH_CURRENT_HERO_PROFILE_ERROR)
+export const patchCurrHeroProfile = makeRequest(
+  updateHeroProfile,
+  PATCH_CURRENT_HERO_PROFILE_START,
+  PATCH_CURRENT_HERO_PROFILE_SUCCESS,
+  PATCH_CURRENT_HERO_PROFILE_ERROR)
 export const editCurrHeroAttr = makeAction(EDIT_CURRENT_HERO_ATTRIBUTE)
