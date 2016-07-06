@@ -5,13 +5,13 @@
 </style>
 
 <script>
+  import NumericalInput from '../components/NumericalInput'
+  import StatisticButton from '../components/StatisticButton'
   import {
     editCurrHeroAttr,
     fetchCurrHeroProfile,
     patchCurrHeroProfile
   } from '../vuex/actions/heroes'
-  import NumericalInput from './NumericalInput'
-  import StatisticButton from './StatisticButton'
 
   export default {
     computed: {

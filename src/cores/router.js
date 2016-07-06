@@ -1,7 +1,7 @@
 import { VueRouter } from '../cores'
 
-import HeroListPage from '../components/HeroListPage'
-import HeroProfilePage from '../components/HeroProfilePage'
+import HeroListPage from '../pages/HeroListPage'
+import HeroProfilePage from '../pages/HeroProfilePage'
 
 const router = new VueRouter({
   history: true

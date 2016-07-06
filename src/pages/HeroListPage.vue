@@ -8,8 +8,8 @@
 </style>
 
 <script>
+  import HeroCard from '../components/HeroCard'
   import { fetchHeroes } from '../vuex/actions/heroes'
-  import HeroCard from './HeroCard'
 
   export default {
     ready () {
