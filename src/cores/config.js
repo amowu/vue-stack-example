@@ -1,9 +1,9 @@
 const IS_LOCAL = process.env.NODE_ENV !== 'production'
 
-const API_INVOKE_URL = IS_LOCAL
-  ? 'https://hahow-recruit.herokuapp.com'
-  : 'https://hahow-recruit.herokuapp.com'
+const API_ENDPOINT_URL = IS_LOCAL
+  ? 'https://hahow-recruit.herokuapp.com' // development
+  : 'https://hahow-recruit.herokuapp.com' // production
 
 export {
-  API_INVOKE_URL
+  API_ENDPOINT_URL
 }

@@ -1,8 +1,8 @@
 <style lang="less">
-  /* Global */
+  /* Semantic UI Global */
   & { @import "~semantic-ui-less/definitions/globals/reset"; }
   & { @import "~semantic-ui-less/definitions/globals/site"; }
-  /* Elements */
+  /* Semantic UI Elements */
   & { @import "~semantic-ui-less/definitions/elements/button"; }
   & { @import "~semantic-ui-less/definitions/elements/container"; }
   & { @import "~semantic-ui-less/definitions/elements/icon"; }
@@ -10,9 +10,9 @@
   & { @import "~semantic-ui-less/definitions/elements/label"; }
   & { @import "~semantic-ui-less/definitions/elements/list"; }
   & { @import "~semantic-ui-less/definitions/elements/segment"; }
-  /* Collections */
+  /* Semantic UI Collections */
   & { @import "~semantic-ui-less/definitions/collections/grid"; }
-  /* Views */
+  /* Semantic UI Views */
   & { @import "~semantic-ui-less/definitions/views/card"; }
   & { @import "~semantic-ui-less/definitions/views/statistic"; }
 </style>

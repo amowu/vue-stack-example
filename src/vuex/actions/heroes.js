@@ -30,19 +30,35 @@ function makeRequest (resource, startType, successType, errorType) {
   }
 }
 
+/** GET /heroes */
 export const fetchHeroes = makeRequest(
   getHeroes,
   FETCH_CURRENT_HERO_LIST_START,
   FETCH_CURRENT_HERO_LIST_SUCCESS,
   FETCH_CURRENT_HERO_LIST_ERROR)
+/**
+ * GET /heroes/:heroId/profile
+ * @param {String} heroId
+ */
 export const fetchCurrHeroProfile = makeRequest(
   getHeroProfile,
   FETCH_CURRENT_HERO_PROFILE_START,
   FETCH_CURRENT_HERO_PROFILE_SUCCESS,
   FETCH_CURRENT_HERO_PROFILE_ERROR)
+/**
+ * PATCH /heroes/:heroId/profile
+ * @param {String} heroId
+ * @param {Object} profile - 例如：{ str: 1, int: 2, ... }
+ */
 export const patchCurrHeroProfile = makeRequest(
   updateHeroProfile,
   PATCH_CURRENT_HERO_PROFILE_START,
   PATCH_CURRENT_HERO_PROFILE_SUCCESS,
   PATCH_CURRENT_HERO_PROFILE_ERROR)
+/**
+ * 修改當前 hero profiles
+ * @param {String} heroId
+ * @param {String} attr - 例如：str
+ * @param {Number} newVal - 更新後的數值
+ */
 export const editCurrHeroAttr = makeAction(EDIT_CURRENT_HERO_ATTRIBUTE)
