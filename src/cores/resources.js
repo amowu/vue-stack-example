@@ -1,7 +1,11 @@
-import { Vue } from '../cores'
-import { API_INVOKE_URL } from '../cores/config'
+import VueResource from 'vue-resource'
 
-Vue.http.options.root = API_INVOKE_URL
+import { Vue } from '../cores'
+import { API_ENDPOINT_URL } from '../cores/config'
+
+Vue.use(VueResource)
+
+Vue.http.options.root = API_ENDPOINT_URL
 
 export const getHeroes = function () {
   return Vue.http.get('heroes')

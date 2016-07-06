@@ -1,7 +1,10 @@
-import { VueRouter } from '../cores'
+import VueRouter from 'vue-router'
 
+import { Vue } from '../cores'
 import HeroListPage from '../pages/HeroListPage'
 import HeroProfilePage from '../pages/HeroProfilePage'
+
+Vue.use(VueRouter)
 
 const router = new VueRouter({
   history: true
