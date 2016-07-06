@@ -56,7 +56,6 @@
       </div>
     </div>
     <button
-      name="hero-profiles-updated-btn"
       class="ui green massive button"
       :class="{ 'disabled': okButtonDisabled }"
       @click.prevent="ok">

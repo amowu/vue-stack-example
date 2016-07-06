@@ -72,7 +72,8 @@
 </script>
 
 <template>
-  <div class="ui basic segment"
+  <div id="hero-profile"
+    class="ui basic segment"
     :class="{ 'loading': heroes.isHeroProfilePageLoading }"
     v-if="heroes.current.heroId">
     <div class="ui stackable two column grid container">
