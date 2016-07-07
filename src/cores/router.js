@@ -7,7 +7,7 @@ import HeroProfilePage from '../pages/HeroProfilePage'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
-  history: true // 如果你的 server 不支援 HTML5 Histroy API，請設為 false
+  history: false // 如果你的 server 不支援 HTML5 Histroy API，請設為 false
 })
 
 router.map({
