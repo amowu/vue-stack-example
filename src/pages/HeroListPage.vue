@@ -7,6 +7,10 @@
   .ui.cards {
     justify-content: center;
   }
+  /** 移除 Semantic UI 本身的 transition，否則 Vue 無法套用自己的 transition */
+  .ui.cards > .card, .ui.card {
+    transition: none;
+  }
 </style>
 
 <script>
@@ -30,6 +34,12 @@
         this.fetchHeroes()
       }
     },
+    transitions: {
+      bounce: {
+        enterClass: 'bounceInDown',
+        leaveClass: 'bounceOutRight'
+      }
+    },
     vuex: {
       actions: {
         fetchHeroes
@@ -45,7 +55,11 @@
   <div>
     <div class="ui basic segment" :class="{ 'loading': isLoading }">
       <div class="ui cards">
-        <hero-card v-for="hero in heroes.entities"
+        <hero-card
+          v-for="hero in heroes.entities"
+          class="animated"
+          transition="bounce"
+          stagger="100"
           :image="hero.image"
           :name="hero.name"
           :selected="hero.id == heroes.current.heroId"
