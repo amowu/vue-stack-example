@@ -2,7 +2,7 @@ import {
   getHeroes,
   getHeroProfile,
   updateHeroProfile
-} from '../../cores/resources'
+} from '../../resources/heroes'
 import {
   EDIT_CURRENT_HERO_ATTRIBUTE,
   FETCH_CURRENT_HERO_LIST_ERROR,

@@ -1,6 +1,6 @@
+import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import { Vue } from '../cores'
 import HeroListPage from '../pages/HeroListPage'
 import HeroProfilePage from '../pages/HeroProfilePage'
 

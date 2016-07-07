@@ -1,6 +1,6 @@
+import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { Vue } from '../cores'
 import heroes from './mutations/heroes'
 
 Vue.use(Vuex)
