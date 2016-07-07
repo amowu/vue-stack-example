@@ -11,6 +11,11 @@
   .ui.cards > .card, .ui.card {
     transition: none;
   }
+  /** 套用自己的 card:hover animation */
+  .ui.cards a.card:hover, a.ui.card:hover {
+    transform: none;
+    animation: pulse 1s infinite;
+  }
 </style>
 
 <script>
