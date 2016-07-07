@@ -21,12 +21,14 @@
         return isHeroListPageLoading || isHeroProfilePageLoading
       }
     },
-    ready () {
-      // HeroListPage 第一次被 render 的時候，像 backend 請求 heroes 資料
-      this.fetchHeroes()
-    },
     components: {
       HeroCard // <hero-card>
+    },
+    route: {
+      data (transition) {
+        // HeroListPage render 的時候，向 backend 請求 heroes 資料
+        this.fetchHeroes()
+      }
     },
     vuex: {
       actions: {
