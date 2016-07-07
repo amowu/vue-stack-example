@@ -12,4 +12,17 @@ const store = new Vuex.Store({
   }
 })
 
+// Hot Reloading for Vuex
+// see more: http://vuex.vuejs.org/en/hot-reload.html
+if (module.hot) {
+  module.hot.accept(['./mutations/heroes'], () => {
+    const heroes = require('./mutations/heroes').default
+    store.hotUpdate({
+      modules: {
+        heroes
+      }
+    })
+  })
+}
+
 export default store
