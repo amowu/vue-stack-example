@@ -1,7 +1,7 @@
 {
   "name": "hahow-recruit-frontend",
-  "version": "1.1.0",
-  "description": "這是一個小型的徵才專案，使用 Vue.js，依照 Hahow back-end APIs 所提供的資料、以及 Wireframe 來完成頁面。",
+  "version": "1.1.1",
+  "description": "這是一個小型的前端工程師徵才專案，依照某家公司所提供的需求資料，使用 Vue.js 來完成的 SPA（單頁面應用程式）",
   "author": "Amo Wu <amo260@gmail.com>",
   "private": true,
   "scripts": {
