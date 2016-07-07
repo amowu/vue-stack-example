@@ -43,13 +43,13 @@ const mutations = {
    * SUCCESS: 關閉 Hero List Page loading 動畫
    *          更新 hero list 資料
    */
-  [FETCH_CURRENT_HERO_LIST_ERROR] (state, error) {
+  [FETCH_CURRENT_HERO_LIST_ERROR] (state, response) {
     state.isHeroListPageLoading = false
   },
   [FETCH_CURRENT_HERO_LIST_START] (state) {
     state.isHeroListPageLoading = true
   },
-  [FETCH_CURRENT_HERO_LIST_SUCCESS] (state, heroes) {
+  [FETCH_CURRENT_HERO_LIST_SUCCESS] (state, {data: heroes}) {
     state.isHeroListPageLoading = false
     if (Array.isArray(heroes)) {
       // convert heroes Array to KeyValue Map
@@ -72,13 +72,13 @@ const mutations = {
    *          設定當前 hero 數值
    *          設定當前 hero 數值總和
    */
-  [FETCH_CURRENT_HERO_PROFILE_ERROR] (state, error) {
+  [FETCH_CURRENT_HERO_PROFILE_ERROR] (state, response) {
     state.isHeroProfilePageLoading = false
   },
   [FETCH_CURRENT_HERO_PROFILE_START] (state) {
     state.isHeroProfilePageLoading = true
   },
-  [FETCH_CURRENT_HERO_PROFILE_SUCCESS] (state, profile, heroId) {
+  [FETCH_CURRENT_HERO_PROFILE_SUCCESS] (state, {data: profile}, heroId) {
     state.isHeroProfilePageLoading = false
     state.current.heroId = heroId
     state.current.profile = { ...profile }

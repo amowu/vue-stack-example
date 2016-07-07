@@ -36,7 +36,10 @@
     route: {
       data (transition) {
         // HeroListPage render 的時候，向 backend 請求 heroes 資料
-        this.fetchHeroes()
+        // 如果想要等待 API 回應在跳轉的話，可以加 waitForData: true
+        // 如果想要失敗中斷路由的話，
+        // 可以接著 .catch.catch(response => {transition.abort()})
+        return this.fetchHeroes()
       }
     },
     transitions: {

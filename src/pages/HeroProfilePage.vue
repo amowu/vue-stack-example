@@ -48,7 +48,7 @@
     route: {
       data ({to: {params: { heroId }}}) {
         // HeroProfilePage render 的時候，向 backend 請求 hero profile 資料
-        this.fetchCurrHeroProfile(heroId)
+        return this.fetchCurrHeroProfile(heroId)
       }
     },
     vuex: {
