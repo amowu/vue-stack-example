@@ -7,6 +7,15 @@
   .ui.cards {
     justify-content: center;
   }
+  /** 移除 Semantic UI 本身的 transition，否則 Vue 無法套用自己的 transition */
+  .ui.cards > .card, .ui.card {
+    transition: none;
+  }
+  /** 套用自己的 card:hover animation */
+  .ui.cards a.card:hover, a.ui.card:hover {
+    transform: none;
+    animation: pulse 1s infinite;
+  }
 </style>
 
 <script>
@@ -21,12 +30,23 @@
         return isHeroListPageLoading || isHeroProfilePageLoading
       }
     },
-    ready () {
-      // HeroListPage 第一次被 render 的時候，像 backend 請求 heroes 資料
-      this.fetchHeroes()
-    },
     components: {
       HeroCard // <hero-card>
+    },
+    route: {
+      data (transition) {
+        // HeroListPage render 的時候，向 backend 請求 heroes 資料
+        // 如果想要等待 API 回應在跳轉的話，可以加 waitForData: true
+        // 如果想要失敗中斷路由的話，
+        // 可以接著 .catch.catch(response => {transition.abort()})
+        return this.fetchHeroes()
+      }
+    },
+    transitions: {
+      bounce: {
+        enterClass: 'bounceInDown',
+        leaveClass: 'bounceOutRight'
+      }
     },
     vuex: {
       actions: {
@@ -43,7 +63,11 @@
   <div>
     <div class="ui basic segment" :class="{ 'loading': isLoading }">
       <div class="ui cards">
-        <hero-card v-for="hero in heroes.entities"
+        <hero-card
+          v-for="hero in heroes.entities"
+          class="animated"
+          transition="bounce"
+          stagger="100"
           :image="hero.image"
           :name="hero.name"
           :selected="hero.id == heroes.current.heroId"

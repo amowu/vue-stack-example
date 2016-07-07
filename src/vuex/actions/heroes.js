@@ -2,7 +2,7 @@ import {
   getHeroes,
   getHeroProfile,
   updateHeroProfile
-} from '../../cores/resources'
+} from '../../services/heroes'
 import {
   EDIT_CURRENT_HERO_ATTRIBUTE,
   FETCH_CURRENT_HERO_LIST_ERROR,
@@ -23,10 +23,12 @@ function makeAction (type) {
 function makeRequest (resource, startType, successType, errorType) {
   return ({ dispatch }, ...args) => {
     dispatch(startType)
-    resource(...args).then(
-      response => dispatch(successType, response.data, ...args),
-      response => dispatch(errorType, response, ...args)
-    )
+    return resource(...args)
+      .then(response => dispatch(successType, response, ...args))
+      .catch(response => {
+        dispatch(errorType, response, ...args)
+        return Promise.reject()
+      })
   }
 }
 

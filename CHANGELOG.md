@@ -1,3 +1,15 @@
+<a name="1.1.0"></a>
+# 1.1.0 (2016-07-07)
+
+
+### Features
+
+* add json-server mock db 0092090
+* 新增 HeroCard hover 效果 dd06550
+* 新增 HeroCard 進場效果 c9edce0
+
+
+
 <a name="1.0.0"></a>
 # 1.0.0 (2016-07-06)
 

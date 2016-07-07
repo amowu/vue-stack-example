@@ -15,6 +15,8 @@
   /* Semantic UI Views */
   & { @import "~semantic-ui-less/definitions/views/card"; }
   & { @import "~semantic-ui-less/definitions/views/statistic"; }
+  /* animate.css */
+  & { @import "~animate.css"; }
 </style>
 
 <script>

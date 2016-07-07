@@ -41,22 +41,15 @@
         this.editCurrHeroAttr(heroId, attr, newVal)
       }
     },
-    watch: {
-      '$route.params.heroId' (heroId, prevHeroId) {
-        // 監聽路由 /heroes/:heroId 的 :heroId，有變更的話就重新請求 hero profile
-        if (heroId !== prevHeroId) {
-          this.fetchCurrHeroProfile(heroId)
-        }
-      }
-    },
-    ready () {
-      const { heroId } = this.$route.params
-      // HeroProfilePage 第一次被 render 的時候，像 backend 請求 hero profile 資料
-      this.fetchCurrHeroProfile(heroId)
-    },
     components: {
       NumericalInput, // <numerical-input>
       StatisticButton // <statistic-button>
+    },
+    route: {
+      data ({to: {params: { heroId }}}) {
+        // HeroProfilePage render 的時候，向 backend 請求 hero profile 資料
+        return this.fetchCurrHeroProfile(heroId)
+      }
     },
     vuex: {
       getters: {

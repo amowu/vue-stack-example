@@ -1,6 +1,6 @@
+import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { Vue } from '../cores'
 import heroes from './mutations/heroes'
 
 Vue.use(Vuex)
@@ -11,5 +11,18 @@ const store = new Vuex.Store({
     heroes
   }
 })
+
+// Hot Reloading for Vuex
+// see more: http://vuex.vuejs.org/en/hot-reload.html
+if (module.hot) {
+  module.hot.accept(['./mutations/heroes'], () => {
+    const heroes = require('./mutations/heroes').default
+    store.hotUpdate({
+      modules: {
+        heroes
+      }
+    })
+  })
+}
 
 export default store
