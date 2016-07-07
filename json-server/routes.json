@@ -1,0 +1,3 @@
+{
+  "/heroes/:id/profile": "/profile/:id"
+}
