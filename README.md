@@ -128,7 +128,6 @@ $ npm run build
 │   │   ├── NumericalInput.vue ---- 提供增減按鈕的數字元件，可複用
 │   │   └── StatisticButton.vue --- 顯示一筆統計數字、以及可操作的按鈕，可複用
 │   ├── cores
-│   │   ├── config.js ------------- 原始碼使用的配置設定擋，例如：dev 與 prod 的 backend API URL
 │   │   ├── resource.js ----------- vue-resource 的相關配置，負責處理與後端的 HTTP 通訊
 │   │   └── router.js ------------- vue-router 的相關配置，負責前端頁面的路由規則
 │   ├── pages
